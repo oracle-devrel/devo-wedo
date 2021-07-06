@@ -20,4 +20,4 @@ Video describing the solution created by WEDO team from a Marketing point of vie
 
 {% youtube hlMRht0crBw %}
 
-![](../images/architecture-7010048951821.jpeg)
+![](images/architecture-7010048951821.jpeg)
