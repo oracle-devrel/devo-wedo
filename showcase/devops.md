@@ -9,20 +9,20 @@ description: Robot Color Sorter, Hybrid Apps (OKE & K8s raspberry cluster), Gigi
 
 **Robot Color Sorter**
 
-  * In this use case you will see how to use **Oracle Developer Cloud Service** related to **GIT, CI/CD pipelines **and integration (**webhooks integrations**) with external apps like **Jenkins, SonarQube or Slack**.
-  * Robot Color Sorter demo show how to change code throught **snipplets **and how to use **kanban**, resolving issues or appliying patches to the code. Once the code is updated or changed, the **CI/CD pipeline** will complete the appropiate automated tasks to deploy the new **python **code into the robot.
+  * In this use case you will see how to use **Oracle Developer Cloud Service** related to **GIT, CI/CD pipelines** and integration (**webhooks integrations**) with external apps like **Jenkins, SonarQube or Slack**.
+  * Robot Color Sorter demo show how to change code throught **snipplets** and how to use **kanban**, resolving issues or appliying patches to the code. Once the code is updated or changed, the **CI/CD pipeline** will complete the appropiate automated tasks to deploy the new **python** code into the robot.
   * After code deployment, last step will be manual and visual testing by the owner of the patch to verify the code and the functionality.
 
 **Hybrid Apps (OKE & K8s raspberry cluster)**
 
   * This use case is focused in the **Kubernetes (K8s) clusters**, on-prem and public cloud an how to deploy microservices that control phisical assets like robots or drones.
-  * Our special and smart robot (**VECTOR**) will do a customized performance running from a **flow dashboard **(it's code is in Developer Cloud GIT repository).
-  * Vector and drone controller are docker containers that we code in nodejs, contanerized in **docker **(prepared docker file) and deploy in the K8s cluster as part of **CI/CD pipeline**.
+  * Our special and smart robot (**VECTOR**) will do a customized performance running from a **flow dashboard** (it's code is in Developer Cloud GIT repository).
+  * Vector and drone controller are docker containers that we code in nodejs, contanerized in **docker** (prepared docker file) and deploy in the K8s cluster as part of **CI/CD pipeline**.
 
 **[G](https://wedocec-wedoinfra.cec.ocp.oraclecloud.com/site/wedodevops/use-cases/gigis-pizza.html)igi's Pizza - Microservices**
 
   * Use case focused in **microservices and Multitenant DataBase**. We have **three microservices** coded in different laguages like python, nodejs and of course Java (**helidon framework**). This three microservices are part of a **delivery pizza app**, one microservice control the orders, other one control the pizza delivery and the last one control the accounting.
-  1. Order data will be saved as **JSON **files in multitenant DB (java microservice)
+  1. Order data will be saved as **JSON** files in multitenant DB (java microservice)
   2. Delivery data will be saved as **graph node DB** (java microservice)
   3. Accounting data will be saved as regular **SQL data** (nodejs microservice)
 
@@ -35,7 +35,7 @@ description: Robot Color Sorter, Hybrid Apps (OKE & K8s raspberry cluster), Gigi
 
 **Supporting Documentation**
 
-**More detail:   **[https://wedocec-wedoinfra.cec.ocp.oraclecloud.com/site/wedodevops/index.html](https://wedocec-wedoinfra.cec.ocp.oraclecloud.com/site/wedodevops/index.html)
+**More detail:** [https://wedocec-wedoinfra.cec.ocp.oraclecloud.com/site/wedodevops/index.html](https://wedocec-wedoinfra.cec.ocp.oraclecloud.com/site/wedodevops/index.html)
 
 #### Demo Video
 
