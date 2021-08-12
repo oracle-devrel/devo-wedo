@@ -3,6 +3,7 @@ title: WeDo DevOps
 layout: single
 parent: Wedo
 description: Robot Color Sorter, Hybrid Apps (OKE & K8s raspberry cluster), Gigi's Pizza - Microservices & Data Base Transactions
+url: /wedo/devops
 ---
 
 **WEDO DevOps**
