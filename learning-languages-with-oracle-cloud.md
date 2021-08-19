@@ -4,7 +4,6 @@ tags: [OracleCloud,orclapex,orclords,m5stack,M5Paper,esp32,IoT]
 layout: single
 parent: Wedo
 description: Using Oracle Cloud to learn a to speak a new language
-permalink: /wedo/learning-languages
 author: 
   name: Adrian Png
   bio: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -12,6 +11,8 @@ author:
   twitter: notarealtwitter
   github: notarealgithub
 toc: true
+slug: learning-languages
+tags: [oci]
 ---
 
 *By Adrian Png*
