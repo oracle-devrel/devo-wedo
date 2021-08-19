@@ -4,9 +4,16 @@ tags: [OracleCloud,orclapex,orclords,m5stack,M5Paper,esp32,IoT]
 layout: single
 parent: Wedo
 description: Using Oracle Cloud to learn a to speak a new language
-url: /wedo/learning-languages
-author: Adrian Png
+permalink: /wedo/learning-languages
+author: 
+  name: Adrian Png
+  bio: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  home: https://example.com
+  twitter: notarealtwitter
+  github: notarealgithub
+toc: true
 ---
+
 *By Adrian Png*
 
 ![A whiteboard for learning the Japanese language.](assets/the-whiteboard.jpg)
