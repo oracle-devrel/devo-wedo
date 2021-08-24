@@ -3,7 +3,7 @@ title: WeDo Hospitality
 layout: single
 parent: Wedo
 description: "Chatbots bring new ways to interact with customers."
-thumbnail: http://placekitten.com/800/600
+thumbnail: https://via.placeholder.com/800x600?text=Hospitality+Thumbnail
 categories: [oci, modernize]
 tags: [oci, hardware]
 ---

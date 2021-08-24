@@ -12,7 +12,7 @@ author:
   github: notarealgithub
 toc: true
 slug: learning-languages
-thumbnail: http://placekitten.com/1200/1800
+thumbnail: https://via.placeholder.com/1200x1800?text=Learning+Languages
 categories: [build]
 tags: [oci,hardware]
 ---
