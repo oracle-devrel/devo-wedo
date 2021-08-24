@@ -2,7 +2,10 @@
 title: WeDo Hospitality
 layout: single
 parent: Wedo
-description: "Looking for new business opportunities? Chatbots bring new ways to interact with customers using modern channels such as Messaging Apps, Voice Assistants and Connected Cars."
+description: "Chatbots bring new ways to interact with customers."
+thumbnail: http://placekitten.com/800/600
+categories: [oci, modernize]
+tags: [oci, hardware]
 ---
 Looking for new business opportunities? Chatbots bring new ways to interact with customers using modern channels such as Messaging Apps, Voice Assistants and Connected Cars. This demo, powered by the new Oracle Bot technology and 20 other PaaS and SaaS Oracle Services, shows how we bring users a seamless traveler experience: from web-based booking, mobile checkin with face recognition and voice-driven room services request, to predictive maintenance based on IoT and BigData.
 

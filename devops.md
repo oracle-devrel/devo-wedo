@@ -2,9 +2,12 @@
 title: WeDo DevOps
 layout: single
 parent: Wedo
-description: Robot Color Sorter, Hybrid Apps (OKE & K8s raspberry cluster), Gigi's Pizza - Microservices & Data Base Transactions
+description: A Robot Color Sorter demo.
+thumbnail: http://placekitten.com/350/400
 author: brett-terpstra
 toc: true
+categories: [oci,java]
+tags: [nodejs,java]
 ---
 
 ### Robot Color Sorter

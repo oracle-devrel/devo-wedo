@@ -12,7 +12,9 @@ author:
   github: notarealgithub
 toc: true
 slug: learning-languages
-tags: [oci]
+thumbnail: http://placekitten.com/1200/1800
+categories: [build]
+tags: [oci,hardware]
 ---
 
 *By Adrian Png*
