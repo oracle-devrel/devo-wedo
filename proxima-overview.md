@@ -10,8 +10,6 @@ Few years later, my tastes and interests turned to the Golden Age Sci-Fi (Asimov
 
 ![I think I should write something like © Marvel Comics — All right reserved](assets/marvel.png)
 
--
-
 I wish I had that briefcase available in a number of situations, getting a bad grade or running into the inevitable school bully: my curiosity about the relationship between miniaturization and technology remains a fixed point even today.
 
 Then, decades later, the briefcase idea surfaced again while having fun with an iteration of the Oracle’s [Proxima City](https://www.youtube.com/watch?v=aJUSEEagm8Q) model made by the Italian Innovation Team, a whimsical (as it’s been called) construction made with Legos, Arduinos, sensors and Oracle Cloud Infrastructure services.
