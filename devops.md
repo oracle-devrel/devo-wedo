@@ -20,7 +20,7 @@ url: /wedo/devops
   * Our special and smart robot (**VECTOR**) will do a customized performance running from a **flow dashboard** (it's code is in Developer Cloud GIT repository).
   * Vector and drone controller are docker containers that we code in nodejs, contanerized in **docker** (prepared docker file) and deploy in the K8s cluster as part of **CI/CD pipeline**.
 
-**[G](https://wedocec-wedoinfra.cec.ocp.oraclecloud.com/site/wedodevops/use-cases/gigis-pizza.html)igi's Pizza - Microservices**
+**[Gigi's Pizza - Microservices](https://wedocec-wedoinfra.cec.ocp.oraclecloud.com/site/wedodevops/use-cases/gigis-pizza.html)**
 
   * Use case focused in **microservices and Multitenant DataBase**. We have **three microservices** coded in different laguages like python, nodejs and of course Java (**helidon framework**). This three microservices are part of a **delivery pizza app**, one microservice control the orders, other one control the pizza delivery and the last one control the accounting.
   1. Order data will be saved as **JSON** files in multitenant DB (java microservice)
