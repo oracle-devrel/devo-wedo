@@ -5,7 +5,7 @@ tags: [fullstack,hardware]
 thumbnail: assets/bread.jpeg
 parent: Wedo
 ---
-## The briefcase dream
+## The Briefcase Dream
 
 I've always been a fan of Marvel superheroes comics, long before the successful movie franchise known as MCU. Actually, around 1972–1975, I could find several Marvel comics carefully translated and lettered in my native language by visiting my friendly (actually, he wasn't) news vendor, strategically placed in the market street corner few hundred yards from where I lived.
 

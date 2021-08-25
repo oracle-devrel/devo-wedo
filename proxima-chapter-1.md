@@ -87,7 +87,7 @@ Here's a minimalistic map of the activies for this first episode.
 
 ![](assets/promima-safe-chapter1-6.jpg)
 
-## Building the Stream Analysis subsystem in OCI
+## Building the Stream Analysis Subsystem in OCI
 
 We're going to build the streaming middle-section of our microlab with two elements:
 
