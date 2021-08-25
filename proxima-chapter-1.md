@@ -1,3 +1,9 @@
+---
+title: Chapter One: setting up the event-driven OCI components
+categories: [CATEGORIES]
+tags: [PROXIMA]
+thumbnail: assets/promima-safe-chapter1-4.jpg
+---
 # Chapter One: setting up the event-driven OCI components
 
 *Signals transmitted*
