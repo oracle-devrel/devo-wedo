@@ -1,17 +1,16 @@
 ---
-title: Chapter One: setting up the event-driven OCI components
-categories: [CATEGORIES]
-tags: [PROXIMA]
+title: "Chapter One: setting up the event-driven OCI components"
+categories: [cloudapps]
+tags: [devops,fullstack,oci,hardware]
 thumbnail: assets/promima-safe-chapter1-4.jpg
+parent: Wedo
 ---
-# Chapter One: setting up the event-driven OCI components
-
-*Signals transmitted*
-*Message received*
-*Reaction making impact*
-*Invisibly*
-
-—Neil Peart, (1982) 
+> Signals transmitted  
+> Message received  
+> Reaction making impact  
+> Invisibly
+> 
+> --- Neil Peart, (1982) 
 
 ## Prologue
 
@@ -26,17 +25,18 @@ The dialog with the smart city was implemented through a number of channels: Cha
 Having an open design, the physical model was replicated dozens of times worldwide (including Redwood Shores!), and each instance had subtle but substantial differences to the original structure, showing how an idea can be expanded and improved by interconnecting worldwide teams and adapt the model to the needs of a particular city/country.
 
 ### From Smart to Safe
-Then, Covid-19 begun to hit our lives. The Smart City concept morphed into something different: as a citizen I'd be less interested in knowing that the subway or my bus ride has a 4.2 minutes delay compared to the original schedule, and possibly be mindful in determining if I **can** take advantage of different urban services in a **safe** fashion, extending the safety protocols to closed environments (offices, university rooms, workplaces). And, matter of fact, this is the idea we'll be facing here, trying to build a lab as a tool to design safety-related use cases.
+
+Then, Covid-19 begun to hit our lives. The Smart City concept morphed into something different: as a citizen I'd be less interested in knowing that the subway or my bus ride has a 4.2 minutes delay compared to the original schedule, and possibly be mindful in determining if I *can* take advantage of different urban services in a *safe* fashion, extending the safety protocols to closed environments (offices, university rooms, workplaces). And, matter of fact, this is the idea we'll be facing here, trying to build a lab as a tool to design safety-related use cases.
 
 *Mutatis Mutandis*, we'll modify the original patterns and configurations exposed with **Proxima City** to allow a Smart City Lab become a Safe City Lab, hence the name ProximaSafe. We'll explore a number of technologies involved in different areas - with Oracle Cloud Infrastructure at the core - to build a tiny lab that can be exploited to implement any new idea in something substantial. 
 
 ## Data
 
-- edge data, produced by microcontrollers-sensors and gateways, the atomic units of information representing state and values in a single, memorable point in time
-- data in motion, or fast data - seen as streams of certified information directed to points of first analysis and aggregation, useful to detect anomalies or state change before reaching any destination appointed to data-wrangling activities
-- data at rest, seen as data residing in a structured or semi-structured repository ready for full-blown analytics and phenomena discovery
+- __Edge data__, produced by microcontrollers-sensors and gateways, the atomic units of information representing state and values in a single, memorable point in time
+- __Data in motion__, or fast data - seen as streams of certified information directed to points of first analysis and aggregation, useful to detect anomalies or state change before reaching any destination appointed to data-wrangling activities
+- __Data at rest__, seen as data residing in a structured or semi-structured repository ready for full-blown analytics and phenomena discovery
 
-Let's get rid of the generic and overrated 'Data is the new oil' catchphrase for a moment, we just need to mention the types of data - and their velocity - that a model can efficiently process in each of the stages involved in building a development lab:
+Let's get rid of the generic and overrated "Data is the new oil" catchphrase for a moment, we just need to mention the types of data - and their velocity - that a model can efficiently process in each of the stages involved in building a development lab:
 
 In this context, we're going to elaborate and deepen the setup of distinct environments to reach our goal: conceive and design practical use cases related to safety procedures and protocols by continuously producing information from the edge, continuously analyze the streams of information sourced by the edge to detect anomalies and - then - store data in a repository suitable for Business Intelligence and data operations.
 
@@ -146,21 +146,23 @@ We need to choose an Availability Domain, a Compute shape (4, 8, or 16 CPU - 4 w
 
 Once the instance has been created, let's open a Secure Shell to the instance via the assigned Public IP seen in the Compute Instance page:**
 
-`ssh -i <Your Private Key>pc@<Public IP>
+```bash
+$ ssh -i <Your Private Key>pc@<Public IP>
 Last login: never (ever)
 -bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such
 file or directory
-[opc@ggsa ~]$ ls
+$ ls
 README.txt
-[opc@ggsa ~]$`
+```
 
 and fetch the **osaadmin** password to enter the console 
 
-`<i>[opc@ggsa ~]$ cat README.txt | grep -n 'osaadmin'
+```bash
+$ cat README.txt | grep -n 'osaadmin'
 16:Your osaadmin password to login to OSA UI is <YourPassword>
-[opc@ggsa ~]$ </i>`
+```
 
-which can be used to access our istance. The link https://<Public IP>/osa/login.html should greet us with the welcome page, accessible with user osaadmin and the password grabbed as previously indicated. 
+which can be used to access our istance. The link `https://<Public IP>/osa/login.html` should greet us with the welcome page, accessible with user osaadmin and the password grabbed as previously indicated. 
 
 ![](assets/promima-safe-chapter1-12.jpg)
 
@@ -228,22 +230,25 @@ Then, let's proceed to prepare the environment for subsequent steps like:
 - Install the OCI Command Line Interface with `oci setup config`. That will be handy to access OCI resources from the Matrix command line terminal.
 - Setup **venv** with `python3.6 -m py36env`. Yes, we'll use some Python here.
 - Insert source py36env/bin/activate in a test script and wherever you feel appropriate
-- Install the Extra Packages for Enterprise Linux [https://fedoraproject.org/wiki/EPEL?source=:ex:of:::::RC_WWMK210721P00049:Medium])(EPEL)):   `sudo yum install -y oracle-epel-release-el7`
+- Install the [Extra Packages for Enterprise Linux (EPEL)](https://fedoraproject.org/wiki/EPEL?source=:ex:of:::::RC_WWMK210721P00049:Medium)): `sudo yum install -y oracle-epel-release-el7`
 
 #### Install, configure & test the MQTT Broker**
 
 As said, we'll use Mosquitto as the MQTT broker in OCI with sudo yum install mosquitto, and add some configuration, like
 
-- Create a password file (not really effective for the overall security posture, but I'd add credentials anyway)`: mosquitto_passwd -c <YourUsername> <YourPassword>.`
-- Move the file to the right directory: `sudo mv passwordfile /etc/mosquitto`.
-- Edit the default Mosquitto configuration found in /etc/mosquitto/mosquitto.conf in order to:
-- Identify and change the default port. If the service is likely to be exposed to the wild internet, leaving the default settings to 1883 would be a no-no, maybe, and add username & password previously set in the appropriate sections.
-- Restart Mosquitto: `sudo systemcl restart mosquitto`.
-    Test mosquitto with mosquitto clients, such as **mosquitto_sub** and **mosquitto_pub**
-    in a Matrix Terminal session, subscribe to all topics with mosquitto_sub -h 127.0.0.1 -p -t '#' -u <YourUsername> - <YourPassword>.
-- in another Matrix Terminal session, publish a message with:
-`mosquitto_pub -h 127.0.0.1 -p <port>-t 'Test' -u <YourUsername> -P <YourPassword> -m '{"Name":"Jack Torrance"}'.`
-- if all is well, you should see the message on the subscriber's terminal session: in such a case, grab a coffee or a nice cup of tea, as we're going secure our MQTT Server first, and then installling the OCI SDK and examples for Python.
+1. Create a password file (not really effective for the overall security posture, but I'd add credentials anyway) `: mosquitto_passwd -c <YourUsername> <YourPassword>.`
+2. Move the file to the right directory: `sudo mv passwordfile /etc/mosquitto`.
+3. Edit the default Mosquitto configuration found in /etc/mosquitto/mosquitto.conf in order to identify and change the default port. 
+    
+    If the service is likely to be exposed to the wild internet, leaving the default settings to 1883 would be a no-no, maybe, and add username & password previously set in the appropriate sections.
+4. Restart Mosquitto: `sudo systemcl restart mosquitto`.
+    
+    Test mosquitto with mosquitto clients, such as `mosquitto_sub` and `mosquitto_pub`.
+     
+    In a Matrix Terminal session, subscribe to all topics with `mosquitto_sub -h 127.0.0.1 -p -t '#' -u <YourUsername> - <YourPassword>`.
+5. In another Matrix Terminal session, publish a message with:
+`mosquitto_pub -h 127.0.0.1 -p <port>-t 'Test' -u <YourUsername> -P <YourPassword> -m '{"Name":"Jack Torrance"}'`.
+6. If all is well, you should see the message on the subscriber's terminal session: in such a case, grab a coffee or a nice cup of tea, as we're going secure our MQTT Server first, and then installling the OCI SDK and examples for Python.
 
 #### Secure the MQTT Server running on OCI Compute
 
@@ -251,69 +256,81 @@ There's a number of guides and tutorials, on the Web, about configuring and usin
 
 **Note: when entering the country, organization and other info donʼt use the same exact information for the CA and the Server Certificate as you might encounter problems.**
 
-- Generate a CA key
+1. Generate a CA key
     1. openssl genrsa -des3 -out ca.key 4096 and choose a password, in my case password1,
     2. openssl req -new -x509 -days 2112 -key ca.key -out ca.crt
-- Generate a server key
-    1. openssl genrsa -des3 -out server.key 4096 and choose another password, in my case password2
-- Generate a Certificate Signing Request
-    1. openssl req -new -key server.key -out server.csr
-- Sign the Certificate Signing Request
-    1. openssl x509 -req -days 365 -in server.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out server.crt
-- Verify that every bit is ok
-    1. openssl rsa -noout -text -in server.key
-    2. openssl req -noout -text -in server.csr
-    3. openssl rsa -noout -text -in ca.key
-    4. openssl rsa -noout -text -in ca.key
+2. Generate a server key
+    - openssl genrsa -des3 -out server.key 4096 and choose another password, in my case password2
+3. Generate a Certificate Signing Request
+    - openssl req -new -key server.key -out server.csr
+4. Sign the Certificate Signing Request
+    - openssl x509 -req -days 365 -in server.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out server.crt
+5. Verify that every bit is ok
+    
+    ```sh
+    $ openssl rsa -noout -text -in server.key
+    $ openssl req -noout -text -in server.csr
+    $ openssl rsa -noout -text -in ca.key
+    $ openssl rsa -noout -text -in ca.key
+    ```
 
-- Make a version of the server key that doesn't need the password
-    1. openssl rsa -in server.key -out server.key.insecure
-    2. mv server.key server.key.secure
-    3. mv server.key.insecure server.key
+6. Make a version of the server key that doesn't need the password
+    
+    ```
+    openssl rsa -in server.key -out server.key.insecure
+    mv server.key server.key.secure
+    mv server.key.insecure server.key
+    ```
 
-- Edit the file /usr/lib/python3.6/site-packages/certifi/cacert.pem adding the ca.crt file content (PEM public Key)
+7. Edit the file /usr/lib/python3.6/site-packages/certifi/cacert.pem adding the ca.crt file content (PEM public Key)
 
 Be sure to put (and mantain!) the appropriate files in a certs directory under /etc/mosquitto and have this directory saved where you want to perform some tests, like: 
 
-`[opc@proximaserver ~]$ mosquitto_pub -t 'edge/device/machines' -h <IP
+```sh
+$ mosquitto_pub -t 'edge/device/machines' -h <IP
 Address of OCI compute> -u <username> -P <password> -p <your port> --
 insecure --cafile certs/ca.crt --cert certs/server.crt --key
-certs/server.key -m '{"Developers Developers Developers Developers!"}'`
+certs/server.key -m '{"Developers Developers Developers Developers!"}'
+```
 
 We won't configure bridging (the dialog between Edge Mosquitto and Cloud Mosquitto) for now, that will be done in the second part of our prolix boomer babbling.
 
 #### Get the OCI SDK for Python and Install Libraries
 
-Well, it's time to perform some moves on the chessboard:
+Well, it's time to perform some moves on the chessboard. Clone the git repository from GitHub:
 
-- Clone the git repository from GitHub: `git clone https://github.com/oracle/oci-python-sdk.git`.
+```sh
+git clone https://github.com/oracle/oci-python-sdk.git
+```
 
 This repository contains a wealth of source code and examples, and is regularly updated to reflect the evolution of OCI APIs. Then,
 
-- Install the Python SDK:  `pip install oci`
-- Install the Paho Library: `pip install paho-mqtt`
+1. Install the Python SDK:  `pip install oci`
+2. Install the Paho Library: `pip install paho-mqtt`
 
 and we're ready to write and execute a little python module that will grab sensors messages from the Cloud-side Mosquitto and route the messages to OCI streaming, which in turn will be the source connection for Golden Gate Stream Analytics. To do that, we'll grab the example named stream_example.py and taylor it to our needs. The module is available here (NOTE: insert the GitHub link, open in a new window/tab).
 
 Here are some snippets.
 
-Import the **paho** library enabling the subscription to MQTT topics managed by the Cloud-side Mosquitto.
+Import the `paho` library enabling the subscription to MQTT topics managed by the Cloud-side Mosquitto.
 
-`# imports
+```python
+# imports
 import paho.mqtt.client as mqtt
 import time
 import oci
 import sys
 import ssl
 from base64 import b64encode, b64decode`
+```
 
 Make sure that all the necessary arguments are set before executing this python module:
 
-`# Check Args
+```python
+# Check Args
 if len(sys.argv) < 6:
  print('Usage : ' + sys.argv[0] + " " +
-"oci_config oci_compartment_name oci_stream_name mqtt_hostname
-mqtt_port " + 
+"oci_config oci_compartment_name oci_stream_name mqtt_hostname mqtt_port " + 
 "[mqtt_username] [mqtt_password] [cert_dir] ")
  exit (0)
 oci_config_file = sys.argv[1]
@@ -330,12 +347,15 @@ if len(sys.argv) > 7:
  mqtt_password = sys.argv[7]
 if len(sys.argv) > 8:
  cert_dir = sys.argv[8]`
+```
 
 and subscribe to relevant topics:
 
-`m`qttc.connect(mqtt_hostname, mqtt_port)
+```python
+mqttc.connect(mqtt_hostname, mqtt_port)
 mqttc.subscribe("edge/device/#", 0)
-mqttc.subscribe("cloud/device/#", 0)`
+mqttc.subscribe("cloud/device/#", 0)
+```
 
 We'll leave it as it is for now, keeping in mind that with an additional (small) effort it could be easily transformed in a container image and possibly a microservice within OKE (the mighty Kubernetes Engine within Oracle Cloud Infrastructure).
 
@@ -343,7 +363,8 @@ We'll leave it as it is for now, keeping in mind that with an additional (small)
 
 Before being ready to accept data from the edge, let's describe a simplistic data format in JSON which we'll use to program the M5 microcontrollers later: we'll use to test the end-to-end flow issuing a command from our own Matrix terminal (I still love the green-on-black, VT100-like, steampunk-oriented shell) seeing if it's been accepted by the stream analysis module. We'll inspire to what the Innovation Team has already made in Proxima City, plus the geo-coordinates:
 
-`{
+```json
+{
  "DEV_ID":"Colosseum",
  "sensor":"Environmental",
  "PROGR":1,
@@ -353,11 +374,13 @@ Before being ready to accept data from the edge, let's describe a simplistic dat
  "Lat":41.89024902749216, 
  "Lon":12.49195874712777,
 "STATUS":"Safety sensor inside Colosseum, in Rome."
-}`
+}
+```
 
 Let's execute the mqtt2oci Python code on the Compute instance that runs mosquitto:
 
-`source /home/opc/scripts/py36env/bin/activate
+```sh
+source /home/opc/scripts/py36env/bin/activate
 export OCI_COMPARTMENT=<My Compartment Name>
 export OCI_STREAM_NAME=PSstream
 export MQTT_HOSTNAME=<My HostName
@@ -367,30 +390,34 @@ export MQTT_PASSWORD=<Password>
 export CERTIFICATES="/home/opc/mqtt/certs"
 python -u mqtt2streaming.py ~/.oci/config $OCI_COMPARTMENT
 $OCI_STREAM_NAME $MQTT_HOSTNAME $MQTT_PORT $MQTT_USERNAME $MQTT_PASSWORD
-$CERTIFICATES`
+$CERTIFICATES
+```
 
 and open a couple of Matrix shells (yes!) to send and trace the message:
 
-- **Listen** to messages on any topic
-
-`mosquitto_sub -d -t '#' -h <your host> -u <username> -P <password> -p
+1. **Listen** to messages on any topic
+    
+    ```
+    mosquitto_sub -d -t '#' -h <your host> -u <username> -P <password> -p
 <port> --insecure --cafile certs/ca.crt --cert certs/server.crt --key
-certs/server.key`
+certs/server.key
+    ```
 
-- **Fire** the message
+2. **Fire** the message
 
-`mosquitto_pub -t 'edge/device/machines' -h <your host> -u <username> -P
+    ```
+    mosquitto_pub -t 'edge/device/machines' -h <your host> -u <username> -P
 <password> -p <port> --insecure --cafile certs/ca.crt --cert
 certs/server.crt --key certs/server.key -m
 '{"DEV_ID":"Colosseum","sensor":"Environmental","PROGR":1,"TSTAMP":1234567
 8,"temp":20,"hum":45,"Lon":12.491958,"Lat":41.890249,"STATUS":"Safety
-sensor inside Colosseum, Rome."}'`
+sensor inside Colosseum, Rome."}'
+    ```
 
-If all is good, the results should be:
+If all is good, the results on the **Listen** shell should be:
 
-- On the **Listen** shell:
-
-`log buffer Received PUBLISH (d0, q0, r0, m0), 'edge/device/machines', ... 
+```sh
+log buffer Received PUBLISH (d0, q0, r0, m0), 'edge/device/machines', ... 
 (175 bytes)
 message edge/device/machines 0
 {"DEV_ID":"Colosseum","sensor":"Environmental","PROGR":1,"TSTAMP":12345678
@@ -399,6 +426,7 @@ sensor inside Colosseum, Rome."}
 Publishing message to the stream ocid1.stream.oc1.eu-frankfurt
 1.amaaaaaazfnr5nqatjglweu6qgzgrtnippcge3tjrunpzrgvkqc7en375ipq 
 Published message to partition 0 , offset 31420`
+```
 
 indicating that the message has been correctly routed to OCI Streaming, which can be verified on the OCI Streaming web console by retrieving messages in the last 60 seconds:
 
@@ -413,7 +441,7 @@ and, ultimately, check the correct reception on the Stream Analytics designer co
 We have just touched a number of things here, but the best is yet to come! In the next episode we're going to explore the following topics:
 
 - **Selecting** the functionalities to be assigned to the edge components
- - **Installing, Configuring and Bridging** the local MQTT Server in the Raspberry Pi
+- **Installing, Configuring and Bridging** the local MQTT Server in the Raspberry Pi
 - **Develop and Deploy** a serverless function to send alarms to the edge available as an API
 
 See you on the next chapter. Zip and Zest!
