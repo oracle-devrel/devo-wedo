@@ -1,3 +1,9 @@
+---
+title: Mr. Stark’s briefcase and ProximaSafe
+categories: [CATEGORIES]
+tags: [PROXIMA]
+thumbnail: assets/bread.jpeg
+---
 # Mr. Stark’s briefcase and ProximaSafe
 
 ## The briefcase dream
