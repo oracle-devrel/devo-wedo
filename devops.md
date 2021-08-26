@@ -3,7 +3,7 @@ title: WeDo DevOps
 layout: single
 parent: Wedo
 description: A Robot Color Sorter demo.
-thumbnail: https://via.placeholder.com/350x400?text=DevOps+Thumbnail
+thumbnail: assets/gigispizza-thumb.png
 author: brett-terpstra
 toc: true
 categories: [oci,java]

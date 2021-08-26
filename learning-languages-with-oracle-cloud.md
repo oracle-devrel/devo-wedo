@@ -12,7 +12,7 @@ author:
   github: notarealgithub
 toc: true
 slug: learning-languages
-thumbnail: https://via.placeholder.com/1200x1800?text=Learning+Languages
+thumbnail: assets/the-whiteboard.jpg
 categories: [build]
 tags: [oci,hardware]
 ---
